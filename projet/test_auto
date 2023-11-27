@@ -16,49 +16,61 @@ driver = webdriver.Chrome(options=chrome_options)
 # Maintenant, vous pouvez utiliser l'objet 'driver' pour effectuer des actions Selenium
 
 driver.get("http://localhost/exo%204%20bug/IT-exo-PHP/projet/form.php")
-
-#de préférence utiliser des ID et PAS XPATH
+driver.maximize_window()
+time.sleep(2)
 
 jeuDeTest = [
-                ["Florent", "Bailly", "f.bailly@it-students.fr", "11 rue de it 69000 Lyon", "123", "France", "xxx", "zip", "bailly", "bailly", "01/25", "987", "12", "13" ],
+                ["Florent", "Bailly", "f.bailly@it-students.fr", "11 rue de it 69000 Lyon", "123", "France", "xxx", "zip", "bailly", "36387", "01/25", "987", "12", "13" ],
+                ["Florent", "Bailly", "f.bailly@it-students.fr", "11 rue de it 69000 Lyon", "123", "France", "xxx", "zip", "bailly", "36387", "01/25", "987", "12", "13" ],
+                ["Florent", "Bailly", "f.bailly@it-students.fr", "11 rue de it 69000 Lyon", "123", "France", "xxx", "zip", "bailly", "36387", "01/25", "987", "12", "13" ],
+                ["Florent", "Bailly", "f.bailly@it-students.fr", "11 rue de it 69000 Lyon", "123", "France", "xxx", "zip", "bailly", "36387", "01/25", "987", "12", "13" ],
+                ["Florent", "Bailly", "f.bailly@it-students.fr", "11 rue de it 69000 Lyon", "123", "France", "xxx", "zip", "bailly", "36387", "01/25", "987", "12", "13" ],
+                ["Florent", "Bailly", "f.bailly@it-students.fr", "11 rue de it 69000 Lyon", "123", "France", "xxx", "zip", "bailly", "36387", "01/25", "987", "12", "13" ],
+                ["Florent", "Bailly", "f.bailly@it-students.fr", "11 rue de it 69000 Lyon", "123", "France", "xxx", "zip", "bailly", "36387", "01/25", "987", "12", "13" ],
+                ["Florent", "Bailly", "f.bailly@it-students.fr", "11 rue de it 69000 Lyon", "123", "France", "xxx", "zip", "bailly", "36387", "01/25", "987", "12", "13" ],
+                ["Florent", "Bailly", "f.bailly@it-students.fr", "11 rue de it 69000 Lyon", "123", "France", "xxx", "zip", "bailly", "36387", "01/25", "987", "12", "13" ],
+                ["Florent", "Bailly", "f.bailly@it-students.fr", "11 rue de it 69000 Lyon", "123", "France", "xxx", "zip", "bailly", "36387", "01/25", "987", "12", "13" ],
             ]
 for test in jeuDeTest : 
 
     driver.find_element(By.ID, "firstName").send_keys(test[0])
-    time.sleep(2)
+    #time.sleep(1)
     driver.find_element(By.ID, "lastName").send_keys(test[1])
-    time.sleep(2)
+    #time.sleep(1)
     driver.find_element(By.ID, "username").send_keys(test[2])
-    time.sleep(2)
+    #time.sleep(1)
     driver.find_element(By.ID, "address").send_keys(test[3])
-    time.sleep(2)
-    driver.find_element(By.ID, "country").send_keys(test[5])
-    time.sleep(2)
-    driver.find_element(By.ID, "state").send_keys(test[6])
-    time.sleep(2)
+    #time.sleep(1)
+    
+    #driver.find_element(By.ID, "country").send_keys(test[5])
+    #time.sleep(1)
+    #driver.find_element(By.ID, "state").send_keys(test[6])
+    #time.sleep(1)
+
     driver.find_element(By.XPATH, '//*[@id="country"]/option[2]').click()
-    time.sleep(2)
-    driver.find_element(By.ID, "state").click()
-    time.sleep(2)
+    #time.sleep(1)
     driver.find_element(By.XPATH, '//*[@id="state"]/option[2]').click()
-    time.sleep(2)
+    #time.sleep(1)
     driver.find_element(By.ID, "zip").send_keys(test[7])
-    time.sleep(2)
+    #time.sleep(1)
     driver.find_element(By.ID, "cc-name").send_keys(test[8])
-    time.sleep(2)
-    driver.find_element(By.ID, "cc-name").send_keys(test[9])
-    time.sleep(2)
-    driver.find_element(By.ID, "cc-number").send_keys(test[10])
-    time.sleep(2)
-    driver.find_element(By.ID, "cc-expiration").send_keys(test[11])
-    time.sleep(2)
-    driver.find_element(By.ID, "cc-cvv").send_keys(test[12])
-    time.sleep(2)
-    driver.find_element(By.ID,"details").send_keys(test[13])
-    time.sleep(2)
-    driver.find_element(By.ID, "submitForm").click()
-    time.sleep(2)
+    #time.sleep(1)
+    driver.find_element(By.ID, "cc-number").send_keys(test[9])
+    #time.sleep(1)
+    driver.find_element(By.ID, "cc-expiration").send_keys(test[10])
+    #time.sleep(1)
+    driver.find_element(By.ID, "cc-cvv").send_keys(test[11])
+    #time.sleep(1)
+    driver.execute_script("document.getElementById('details').value= 'le champs est renseigné';") #javascript
+    time.sleep(3)
+    element = driver.find_element(By.ID, "checkoutForm")
+    driver.execute_script("arguments[0].click();", element)
+
+    driver.get("http://localhost/exo%204%20bug/IT-exo-PHP/projet/form.php")
+    driver.maximize_window()
+    time.sleep(5)
 
 
-input()
 
+## body = driver.find_element(By.XPATH, '//label[.="Shipping address is the same as my billing address"]')
+#  body.send_keys(Keys.ARROW_DOWN)
