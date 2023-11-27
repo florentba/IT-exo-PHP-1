@@ -1,0 +1,21 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+import time
+from selenium.webdriver.support.ui import WebDriverWait
+
+chromedriver_path = r"T:\driver_selenium\chromedriver-win64\chromedriver.exe"
+
+# Utiliser Options pour spécifier le chemin du pilote
+chrome_options = Options()
+chrome_options.add_argument(f"webdriver.chrome.driver={chromedriver_path}")
+
+# Créer une instance du navigateur Chrome avec les options
+driver = webdriver.Chrome(options=chrome_options)
+
+# Maintenant, vous pouvez utiliser l'objet 'driver' pour effectuer des actions Selenium
+
+driver.get("http://localhost/exo%204%20bug/IT-exo-PHP/projet/form.php")
+
+
+
