@@ -17,5 +17,48 @@ driver = webdriver.Chrome(options=chrome_options)
 
 driver.get("http://localhost/exo%204%20bug/IT-exo-PHP/projet/form.php")
 
+#de préférence utiliser des ID et PAS XPATH
 
+jeuDeTest = [
+                ["Florent", "Bailly", "f.bailly@it-students.fr", "11 rue de it 69000 Lyon", "123", "France", "xxx", "zip", "bailly", "bailly", "01/25", "987", "12", "13" ],
+            ]
+for test in jeuDeTest : 
+
+    driver.find_element(By.ID, "firstName").send_keys(test[0])
+    time.sleep(2)
+    driver.find_element(By.ID, "lastName").send_keys(test[1])
+    time.sleep(2)
+    driver.find_element(By.ID, "username").send_keys(test[2])
+    time.sleep(2)
+    driver.find_element(By.ID, "address").send_keys(test[3])
+    time.sleep(2)
+    driver.find_element(By.ID, "country").send_keys(test[5])
+    time.sleep(2)
+    driver.find_element(By.ID, "state").send_keys(test[6])
+    time.sleep(2)
+    driver.find_element(By.XPATH, '//*[@id="country"]/option[2]').click()
+    time.sleep(2)
+    driver.find_element(By.ID, "state").click()
+    time.sleep(2)
+    driver.find_element(By.XPATH, '//*[@id="state"]/option[2]').click()
+    time.sleep(2)
+    driver.find_element(By.ID, "zip").send_keys(test[7])
+    time.sleep(2)
+    driver.find_element(By.ID, "cc-name").send_keys(test[8])
+    time.sleep(2)
+    driver.find_element(By.ID, "cc-name").send_keys(test[9])
+    time.sleep(2)
+    driver.find_element(By.ID, "cc-number").send_keys(test[10])
+    time.sleep(2)
+    driver.find_element(By.ID, "cc-expiration").send_keys(test[11])
+    time.sleep(2)
+    driver.find_element(By.ID, "cc-cvv").send_keys(test[12])
+    time.sleep(2)
+    driver.find_element(By.ID,"details").send_keys(test[13])
+    time.sleep(2)
+    driver.find_element(By.ID, "submitForm").click()
+    time.sleep(2)
+
+
+input()
 
